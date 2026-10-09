@@ -1,0 +1,346 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background:white;
+    --foreground: #080808;
+  }
+}
+
+
+/* Main container */
+.daily-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Page heading */
+.daily-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Add Task button */
+.add-task-btn {
+  display: block;
+  margin: 10px auto 25px auto;
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-task-btn:hover {
+  background-color: #005bb5;
+}
+
+/* Table */
+.daily-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+/* Table header and cells */
+.daily-container th,
+.daily-container td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+}
+
+/* Table header */
+.daily-container th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Table rows */
+.daily-container tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.daily-container tbody tr:hover {
+  background-color: #f1f7ff;
+}
+.delete-button {
+  padding: 8px 14px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #b02a37;
+}
+
+.task-container {
+  width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.task-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.task-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-container label {
+  margin-bottom: 7px;
+  font-weight: bold;
+  color: #444;
+}
+
+.task-container input,
+.task-container textarea,
+.task-container select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.task-container textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.task-container input:focus,
+.task-container textarea:focus,
+.task-container select:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+.task-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.task-container button:hover {
+  background-color: #005ac1;
+}
+
+
+.monthly-page {
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  padding: 40px 20px;
+}
+
+.monthly-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.monthly-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.monthly-container h2 {
+  margin-top: 35px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Month Selector */
+
+.month-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.month-selector label {
+  font-weight: bold;
+  color: #444;
+}
+
+.month-selector input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Statistics Cards */
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.stat-card h3 {
+  margin: 0 0 10px;
+  color: #555;
+  font-size: 16px;
+}
+
+.stat-card p {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Priority Cards */
+
+.priority-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.priority-card {
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.priority-card h3 {
+  margin: 0 0 10px;
+  color: #555;
+}
+
+.priority-card p {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Table */
+
+.monthly-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.monthly-container th,
+.monthly-container td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.monthly-container th {
+  background-color: #f0f2f5;
+  font-weight: bold;
+  color: #333;
+}
+
+.monthly-container td {
+  color: #555;
+}
+
+.monthly-container tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Back Button */
+
+.back-button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 11px 18px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.back-button:hover {
+  background-color: #555;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .priority-container {
+    grid-template-columns: 1fr;
+  }
+
+  .monthly-container {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  .month-selector {
+    flex-direction: column;
+  }
+}
+.color{
+  color: red;
+}
