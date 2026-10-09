@@ -1,114 +1,73 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function DailyTask() {
-  const [tasks, setTasks] = useState([]);
+export default function LoginPage() {
+  const router = useRouter();
 
-  useEffect(() => {
-    const savedTasks = JSON.parse(
-      localStorage.getItem("dailyTasks") || "[]"
-    );
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    setTasks(savedTasks);
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-  }, []);
-  const handleStatusChange = (id) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === id
-        ?
-        {
-          ...task,
-          status: task.status === "Completed"
-            ? "Pending" :
-            "Completed",
-        }
-        : task);
-    setTasks(updatedTasks);
-    localStorage.setItem(
-      "dailyTasks",
-      JSON.stringify(updatedTasks)
-    );
-  };
-  const handleDeleteTask = (id: number) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this task?"
-    );
+    if (email === "ramaramadevi279@gmail.com" && password === "123456") {
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userEmail", email);
 
-    if (!confirmDelete) {
-      return;
+      router.push("/login");
+    } else {
+      alert("Invalid email or password");
     }
-
-    const updatedTasks = tasks.filter(
-      (task) => task.id !== id
-    );
-
-    setTasks(updatedTasks);
-
-    localStorage.setItem(
-      "dailyTasks",
-      JSON.stringify(updatedTasks)
-    );
   };
-
 
   return (
-    <div className="daily-container">
-      <h1>Daily Tasks</h1>
+    <div className="login-container">
+      <div className="login-box">
 
+        <h1 className="login-title">Login</h1>
 
+        <p className="login-subtitle">
+          Login to view the product
+        </p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>✅</th>
-            <th>Date</th>
-            <th>Task Name</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+        <form className="login-form" onSubmit={handleLogin}>
 
-        <tbody>
-          {tasks.map((task, index) => (
-            <tr key={index}>
-              <td>
-                <input type="checkbox" 
-                checked={task.status === "Completed"} 
-                onChange={() => handleStatusChange(task.id)} />
-                </td>
-              <td>{task.date}</td>
-              <td>{task.taskName}</td>
-              <td>{task.description}</td>
-              <td> {task.status} </td>
-                <td><button
-                  className="delete-button"
-                  onClick={() => handleDeleteTask(task.id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          <div className="form-group">
+            <label>Email</label>
 
-      {/* Add Task Button */}
-      <div>
-  <Link href="/add-task">
-    <button className="add-task-btn">
-      Add Task
-    </button>
-  </Link>
+            <input
+              type="email"
+              placeholder="yourmail@gmail.com"
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+  setEmail(e.target.value)
+}
+              required
+            />
+          </div>
 
-  <Link href="/monthly">
-    <button className="add-task-btn">
-      Monthly Dashboard
-    </button>
-  </Link>
-</div>
+          <div className="form-group">
+            <label>Password</label>
+
+            <input
+              type="password"
+              placeholder="*******"
+              value={password}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+  setPassword(e.target.value)
+}
+              required
+            />
+          </div>
+
+          <button type="submit" className="login-button">
+            Login
+          </button>
+
+        </form>
+      </div>
     </div>
   );
-} 
+}
